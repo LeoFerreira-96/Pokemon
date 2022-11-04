@@ -65,7 +65,6 @@ export default {
     ClickShow(event) {
       this.display=true
       this.infoPokemon= event.data
-      console.log(event.data)
     },
     ClickClose() {
       this.display=false
