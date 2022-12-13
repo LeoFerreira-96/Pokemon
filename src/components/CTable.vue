@@ -1,17 +1,22 @@
 <template>
     <div class="container">
-        <DataTable :value="this.pokemons" :paginator="true" :rows="6" v-model:selection="selectedProduct1" selectionMode="single" dataKey="id" @rowSelect="ClickShow($event)">
-          <Column field="id" header="#" :sortable="true"></Column>
-          <Column field="name" header="Nome" :sortable="true"></Column>
-          <Column field="height" header="Altura" :sortable="true"></Column>
-          <Column field="weight" header="Peso" :sortable="true"></Column>
-        </DataTable>
-        <Dialog v-model:visible="display" :style="{width: '35vw'}">
+        <CDataTable :value="this.pokemons" :paginator="true" :rows="6" v-model:selection="selectedProduct1" selectionMode="single" dataKey="id" @rowSelect="ClickShow($event)">
+          <CColumn field="id" header="#" :sortable="true"></CColumn>
+          <CColumn field="name" header="Nome" :sortable="true"></CColumn>
+            <CColumn field="photo" header="Foto">
+                <template>
+                  <Image :src="this.infoPokemon.image" :alt="this.pokemons.name" width="150" />
+                </template>
+            </CColumn>
+          <CColumn field="height" header="Altura" :sortable="true"></CColumn>
+          <CColumn field="weight" header="Peso" :sortable="true"></CColumn>
+        </CDataTable>
+        <CDialog v-model:visible="display" :style="{width: '35vw'}">
           <template #header>
             <h3>{{this.infoPokemon.name}}</h3>
           </template>
             <div class="content">
-              <Image :src="this.infoPokemon.image" :alt="this.pokemons.name" width="150" />
+              <CImage :src="this.infoPokemon.image" :alt="this.pokemons.name" width="150" />
             </div>
             <h3>Habilidades</h3>
             <ul id="abilities">
@@ -21,9 +26,9 @@
             </ul>
 
           <template #footer>
-              <Button label="Fechar" autofocus @click="ClickClose()"/>
+              Button label="Fechar" autofocus @click="ClickClose()"/>
         </template>
-      </Dialog>
+      </CDialog>
     </div>
 </template>
 
@@ -31,7 +36,7 @@
 
 import api from '../services/api'
 export default {
-  name: 'Table',
+  name: 'CTable',
 
   data() {
     return {
@@ -51,6 +56,7 @@ export default {
         this.pokemons.push({
           "id":data.id,
           "name": data.name,
+          "photo":  data.sprites.front_default,
           "height": `${(data.height*10)} cm`,
           "weight": `${(data.weight/10)} kg`,
           "abilities": data.abilities.map((e)=>{

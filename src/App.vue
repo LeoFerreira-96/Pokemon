@@ -2,20 +2,21 @@
   <div class="bg"></div>
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
-  <Title></Title>
+  <CTitle></CTitle>
   <div class="content">
-    <Table></Table>
+    <CTable></CTable>
+    <CCard></CCard>
   </div>
 </template>
 
 <script>
-import Table from './components/Table.vue'
-import Title from './components/Title.vue';
+import CTable from './components/CTable.vue'
+import CTitle from './components/CTitle.vue';
 export default {
   name: 'App',
   components:{
-    Table,
-    Title
+    CTable,
+    CTitle
   }
 }
 </script>
