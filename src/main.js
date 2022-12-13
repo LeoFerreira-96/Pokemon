@@ -20,10 +20,10 @@ const app = createApp(App);
 
 app.use(PrimeVue);
 
-app.component('C_Dialog', Dialog);
-app.component('C_DataTable', DataTable);
-app.component('C_Column', Column);
-app.component('C_Button', Button);
-app.component('C_Image', Image);
+app.component('Dialog', Dialog);
+app.component('DataTable', DataTable);
+app.component('Column', Column);
+app.component('Button', Button);
+app.component('Image', Image);
 
 app.mount("#app");
